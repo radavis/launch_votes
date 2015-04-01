@@ -5,12 +5,14 @@ class NominationsController < ApplicationController
   end
 
   def create
+    @nominees = User.all
     @nomination = Nomination.new(nomination_params)
     @nomination.nominator = current_user
 
     if @nomination.save
       redirect_to nominations_path, notice: "Thanks for your nomination!"
     else
+      flash[:error] = "You have to input a nomination, dummy!"
       render :new
     end
   end

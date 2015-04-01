@@ -16,19 +16,24 @@ feature %q(
     nominator = FactoryGirl.create(:confirmed_user)
     nominee = FactoryGirl.create(:confirmed_user)
 
-    visit root_path
-    click_link "Sign In"
-
-    fill_in "Email", with: nominator.email
-    fill_in "Password", with: nominator.password
-    click_button "Sign In"
-
-    # nominate another user
+    sign_in(nominator)
     visit new_nomination_path
     select nominee.name, from: "Nominee"
     fill_in "Nomination", with: "Best haircut"
     click_button "Create Nomination"
 
     expect(page).to have_content("Thanks for your nomination!")
+  end
+
+  scenario "user forgets to input nomination", focus: true do
+    nominator = FactoryGirl.create(:confirmed_user)
+    nominee = FactoryGirl.create(:confirmed_user)
+
+    sign_in(nominator)
+    visit new_nomination_path
+    select nominee.name, from: "Nominee"
+    click_button "Create Nomination"
+
+    expect(page).to have_content("You have to input a nomination, dummy!")
   end
 end
