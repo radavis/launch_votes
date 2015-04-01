@@ -13,8 +13,8 @@ feature %q(
   # Users can only see people on the same team
 
   scenario "authenticated user nominates another user" do
-    nominator = FactoryGirl.create(:user)
-    nominee = FactoryGirl.create(:user)
+    nominator = FactoryGirl.create(:confirmed_user)
+    nominee = FactoryGirl.create(:confirmed_user)
 
     visit root_path
     click_link "Sign In"
@@ -29,6 +29,6 @@ feature %q(
     fill_in "Nomination", with: "Best haircut"
     click_button "Create Nomination"
 
-    expect(page).to have_content("Thank you for your nomination!")
+    expect(page).to have_content("Thanks for your nomination!")
   end
 end

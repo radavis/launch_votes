@@ -6,12 +6,16 @@ class NominationsController < ApplicationController
 
   def create
     @nomination = Nomination.new(nomination_params)
-    @nomination.nominee = current_user
+    @nomination.nominator = current_user
+
     if @nomination.save
       redirect_to nominations_path, notice: "Thanks for your nomination!"
     else
       render :new
     end
+  end
+
+  def index
   end
 
   private
