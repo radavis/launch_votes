@@ -13,5 +13,6 @@ feature "user signs in" do
     expect(page).to have_content("Signed in successfully.")
     expect(page).to have_link("Sign Out")
     expect(page).to_not have_link("Sign Up")
+    expect(page).to_not have_link("Sign In")
   end
 end
