@@ -47,4 +47,9 @@ feature %q(
 
     expect(page).to have_content("Nominator cannot be nominee!")
   end
+
+  scenario "unauthenticated user visits form" do
+    visit new_nomination_path
+    expect(page).to have_content "You need to sign in first!"
+  end
 end

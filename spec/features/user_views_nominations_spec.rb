@@ -8,7 +8,7 @@ feature %q(
 
   # Acceptance Criteria
 
-  # Authenticated user views nominations
+  # [x] Authenticated user views nominations
   # Un-authenticated users are not authorized
   # Nominees cannot see their awards
   # Admin views awards in ascending order of votes
@@ -21,5 +21,10 @@ feature %q(
     visit nominations_path
     expect(page).to have_content(nomination.content)
     expect(page).to have_content(nomination.nominee.name)
+  end
+
+  scenario "unauthenticated user cannot see nominations" do
+    visit nominations_path
+    expect(page).to have_content "You need to sign in first!"
   end
 end
