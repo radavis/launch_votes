@@ -12,7 +12,7 @@ class NominationsController < ApplicationController
     if @nomination.save
       redirect_to nominations_path, notice: "Thanks for your nomination!"
     else
-      flash[:error] = "You have to input a nomination, dummy!"
+      flash[:error] = @nomination.errors.full_messages.join(" ")
       render :new
     end
   end

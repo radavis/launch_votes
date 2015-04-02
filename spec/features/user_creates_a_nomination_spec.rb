@@ -34,6 +34,18 @@ feature %q(
     select nominee.name, from: "Nominee"
     click_button "Create Nomination"
 
-    expect(page).to have_content("You have to input a nomination, dummy!")
+    expect(page).to have_content("Nomination can't be blank")
+  end
+
+  scenario "user attempts to nominate self" do
+    user = FactoryGirl.create(:confirmed_user)
+
+    sign_in(user)
+    visit new_nomination_path
+    select user.name, from: "Nominee"
+    fill_in "Nomination", with: "Best Student"
+    click_button "Create Nomination"
+
+    expect(page).to have_content("Nominator cannot be nominee!")
   end
 end
