@@ -25,7 +25,7 @@ feature %q(
     expect(page).to have_content("Thanks for your nomination!")
   end
 
-  scenario "user forgets to input nomination", focus: true do
+  scenario "user forgets to input nomination" do
     nominator = FactoryGirl.create(:confirmed_user)
     nominee = FactoryGirl.create(:confirmed_user)
 
