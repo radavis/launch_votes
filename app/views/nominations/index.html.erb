@@ -1,0 +1,8 @@
+<h1>Nominations</h1>
+
+<% @nominations.each do |nomination| %>
+  <div class="nomination">
+    <p><%= nomination.nominee.name %></p>
+    <p><%= nomination.content %></p>
+  </div>
+<% end %>

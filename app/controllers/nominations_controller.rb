@@ -18,6 +18,7 @@ class NominationsController < ApplicationController
   end
 
   def index
+    @nominations = Nomination.all
   end
 
   private
