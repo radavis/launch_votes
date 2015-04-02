@@ -8,9 +8,8 @@ feature %q(
 
   # Acceptance Criteria
 
-  # Authenticated user nominates another user
-  # User cannot nominate self
-  # Users can only see people on the same team
+  # [x] Authenticated user nominates another user
+  # [x] User cannot nominate self
 
   scenario "authenticated user nominates another user" do
     nominator = FactoryGirl.create(:confirmed_user)
