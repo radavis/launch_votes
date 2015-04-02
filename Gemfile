@@ -15,6 +15,6 @@ group :development, :test do
   gem "launchy"
   gem "shoulda-matchers"
   gem "valid_attribute"
-  gem "factory_girl_rails"
+  gem "factory_girl_rails", "~> 4.0"
 end
 

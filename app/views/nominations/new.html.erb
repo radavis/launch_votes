@@ -1,0 +1,9 @@
+<%= form_for @nomination do |f| %>
+  <%= f.label :nominee, for: :nomination_nominee_id %>
+  <%= f.collection_select(:nominee_id, @nominees, :id, :name, prompt: true) %>
+
+  <%= f.label :nomination, for: :nomination_content %>
+  <%= f.text_field :content %>
+
+  <%= f.submit "Create Nomination" %>
+<% end %>
