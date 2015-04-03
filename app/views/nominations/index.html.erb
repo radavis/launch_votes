@@ -4,5 +4,9 @@
   <div class="nomination">
     <p><%= nomination.nominee.name %></p>
     <p><%= nomination.content %></p>
+
+    <%= form_for [nomination, Vote.new] do |f| %>
+      <%= f.submit "Vote!" %>
+    <% end %>
   </div>
 <% end %>

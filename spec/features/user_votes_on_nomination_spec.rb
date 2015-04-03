@@ -11,18 +11,26 @@ feature %q(
 
   # Acceptance Criteria
 
-  # Authenticated user votes on a nomination
-  # User cannot vote twice for the same nomination
+  # [x] Authenticated user votes on a nomination
+  # [x] User cannot vote twice for the same nomination
   # User cannot vote on old nominations
 
-  scenario "user votes on nomination" do
-    user = FactoryGirl.create(:confirmed_user)
-    nomination = FactoryGirl.create(:nomination)
+  let(:user) { FactoryGirl.create(:confirmed_user) }
+  let!(:nomination) { FactoryGirl.create(:nomination) }
 
+  scenario "user votes on nomination" do
     sign_in user
-    visit nominations_page
+    visit nominations_path
     click_button "Vote!"
     expect(page).to have_content("Thanks for voting!")
+  end
+
+  scenario "user attempts to vote twice" do
+    sign_in user
+    visit nominations_path
+    click_button "Vote!"
+    click_button "Vote!"
+    expect(page).to have_content("You can only vote on a nomination once, buddy!")
   end
 
 end
