@@ -9,7 +9,7 @@ feature %q(
   # Acceptance Criteria
 
   # [x] Authenticated user views nominations
-  # Un-authenticated users are not authorized
+  # [x] Un-authenticated users are not authorized
   # Nominees cannot see their awards
   # Admin views awards in ascending order of votes
 
