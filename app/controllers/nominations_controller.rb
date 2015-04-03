@@ -1,4 +1,6 @@
 class NominationsController < ApplicationController
+  before_filter :authenticate_user!, only: [:new, :index]
+
   def new
     @nominees = User.all
     @nomination = Nomination.new
@@ -18,6 +20,7 @@ class NominationsController < ApplicationController
   end
 
   def index
+    @nominations = Nomination.all
   end
 
   private

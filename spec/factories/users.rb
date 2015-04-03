@@ -8,5 +8,8 @@ FactoryGirl.define do
     factory :confirmed_user do
       after(:create) { |u| u.confirm! }
     end
+
+    factory :nominee
+    factory :nominator
   end
 end
